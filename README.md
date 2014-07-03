@@ -1,4 +1,10 @@
 profile
 =======
+Includes bash stuff including PS1 art
 
-My Personal profile and settings (bashrc, etc)
+-_-_-_-_-_-_-_,------, 
+_-_-_-_-_-_-_-|---/\_/\          
+-_-_-_-_-_-_-~|__( ^ .^)  
+_-_-_-_-_-_-_-   ""  ""  ~/profile
+chapmj5@comox:1030:$ sudo du -shx *|grep M
+
