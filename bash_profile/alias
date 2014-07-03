@@ -1,0 +1,70 @@
+#!/bin/bash
+#######################
+## aliases         ####
+#######################
+
+# export PS1="\`if [ \$? = 0 ]; then echo \e[33\;40m\\\^\\\_\\\^\e[0m; else echo \e[36\;40m\\\:\\(\e[0m; fi\` \[\e[31;1m\]\w\[\e[0m\]\n\[\e[36;1m\]\[\e[32;1m\]\u@\h\[\e[0m\]:\!:\$ "
+alias flagstone='ssh -X 10.121.41.209'
+
+alias smartbear_gui='/mnt/netapp/pg/tools/SmartBear/ccollab-cmdline_8.4.8403/ccollabgui'
+alias smartbear_cmd='/mnt/netapp/pg/tools/SmartBear/ccollab-cmdline_8.4.8403/ccollab'
+
+#source /etc/bash_completion.d/git-prompt.sh
+# GIT_PS1=`__git_ps1 " (%s)"`
+# echo $GIT_PS1
+
+SIZE=`wc -l ./onelineart |cut -d' ' -f 1`
+export PS1="\`if [ \$? = 0 ]; then { echo -e \"\\\`sed -n \"\$[ ( \$RANDOM % \$SIZE )  + 1 ]p\" /mnt/netapp/home/linux/chapmj5/.onelineart\\\`\"; } else echo \e[36\;40m\\\:\\(\e[0m; fi\` \[\e[31;1m\]\w\[\e[0m\]\n\[\e[36;1m\]\[\e[32;1m\]\u@\h\[\e[0m\]:\!:\$ "
+
+##### git ######
+# git difftool
+alias gitdt='git difftool -t meld'
+# open all modified in kate session
+#alias gitkate="for file in `git status | grep modified | awk '{print $3}'`; do kate $file; done"
+
+
+##Konsole profile
+if [ `which konsole` != ""  ] 
+ then
+  alias nail='konsoleprofile colors=Purple ; ssh -Y nail ; resetcolors'
+  alias bart='konsoleprofile colors=Blue\ on\ Black ; ssh -Y bart ; resetcolors'
+  alias barneyRoot='konsoleprofile colors=Red && ssh -Y root@barney'
+  alias gitoliteAdmin='konsoleprofile colors=White\ on\ Black && ssh -Y gitolite@10.121.8.14'
+fi
+alias updateMembers='ccm start -d /usr/local/ccmdb/ccm_NavDB -h nail -n chapmj5 -nogui  && ccm update -r -keep_subprojects -p $CCM_PROJECT && bs -u'
+
+#alias ccm='/usr/local/ccm63/bin/ccm start -h nail'
+#alias cmsynergy='ssh -X -f chapmj5@nail /usr/local/ccm63/bin/cmsynergy'
+#alias bs='ssh -f chapmj5@nail bs'
+alias git4nail='/mnt/netapp/scratch/forChapman/ccm_export/git4nail/bin/git'
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -al'
+alias grep='grep --color=auto'
+alias ack='ack-grep'
+
+alias sc='cd /mnt/netapp/scratch/forChapman'
+
+alias spine='cd $PROJECT_ROOT'
+alias spinel='cd $PROJECT_ROOT/$SYNERGY_DIR'
+alias cnl='spine'
+alias cnll='spinel'
+alias uni='cd $PROJECT_ROOT/Unified/Unified'
+alias vis='cd $PROJECT_ROOT/Visualization/Visual*'
+alias setr='spinel;./development/setupDevEnv release'
+alias setd='spinel;./development/setupDevEnv debug'
+
+
+alias py27='source /mnt/netapp/pg/tools/archive/python/Python-2.7.1-experimental/bashrc'
+alias home='cd ~'
+
+alias oldccmclient='ccm start -h nail -d /usr/local/ccmdb/ccm_NavDB'
+alias dbgrunningspine='kdbg -p=$(pidof spine) /var/mnav/bin/spine &'
+
+alias mountiso='sudo mount -t iso9660 -o loop,ro'
+
+# Smart Bear
+alias uploadtask="export PATH=/mnt/netapp/pg/external/archive/jdk/jdk1.6.0_22/bin:$PATH && /opt/ccollab-cmdline/ccollab --scm synergy --ccm-exe /usr/local/ccm63/bin/ccm --ccm-engine-host 'nail' --ccm-local-database-path '/mnt/netapp/home/linux/chapmj5/ccm_wa/ccm_NavDB' --ccm-database-path '/usr/local/ccmdb/ccm_NavDB' addchangelist "
+
+alias exppython="export PATH=/mnt/netapp/pg/tools/archive/python/Python-2.7.1-experimental/debian32/bin:$PATH"
+
+#alias nanoc='nano -Y=c'
